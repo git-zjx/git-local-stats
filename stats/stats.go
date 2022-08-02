@@ -19,6 +19,7 @@ type column []int
 func Print(email string) {
 	commits := processRepositories(email)
 	printCommitsStats(commits)
+	printLessMore()
 }
 
 // getBeginningOfDay given a time.Time calculates the start time of that day
@@ -257,4 +258,24 @@ func printDayCol(day int) {
 	}
 
 	fmt.Printf(out)
+}
+
+func printLessMore() {
+	d := 1
+	b := 30
+	f := 47
+	for i := 0; i < weeksInLastSixMonths-3; i++ {
+		fmt.Printf("    ")
+	}
+	fmt.Printf("   ")
+	fmt.Printf("Less ")
+	fmt.Printf("%c[%d;%d;%dm%s%c[0m ", 0x1B, d, b, f, "  ", 0x1B)
+	f = 43
+	fmt.Printf("%c[%d;%d;%dm%s%c[0m ", 0x1B, d, b, f, "  ", 0x1B)
+	f = 42
+	fmt.Printf("%c[%d;%d;%dm%s%c[0m ", 0x1B, d, b, f, "  ", 0x1B)
+	f = 41
+	fmt.Printf("%c[%d;%d;%dm%s%c[0m ", 0x1B, d, b, f, "  ", 0x1B)
+	fmt.Printf("More")
+	fmt.Printf("\n")
 }
