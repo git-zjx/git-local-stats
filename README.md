@@ -14,3 +14,7 @@ git-local-stats add /path/to/folder
 # 可视化某一贡献者的数据
 git-local-stats stats 977904037@qq.com
 ```
+
+## 来源
+[这里这里](https://flaviocopes.com/go-git-contributions/)   
+大体没有修改，只是改了显示的效果和命令执行的方式
