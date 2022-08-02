@@ -1,4 +1,4 @@
-module git-local-stats
+module github.com/git-zjx/git-local-stats
 
 go 1.17
 
