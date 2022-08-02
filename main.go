@@ -7,9 +7,9 @@ import (
 )
 
 var CmdScan = &cobra.Command{
-	Use:   "scan",
-	Short: "Scan an folder",
-	Long:  "Scan that folder and its subdirectories for repositories to scan, Example: git-stats scan /path/to/folder",
+	Use:   "add",
+	Short: "Add and Scan an folder",
+	Long:  "Add and Scan that folder and its subdirectories for repositories to scan, Example: git-stats scan /path/to/folder",
 	Run:   scanRun,
 }
 
