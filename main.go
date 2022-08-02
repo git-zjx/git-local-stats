@@ -1,7 +1,7 @@
 package main
 
 import (
-	"git-local-stats/stats"
+	"github.com/git-zjx/git-local-stats/stats"
 	"github.com/spf13/cobra"
 	"log"
 )
