@@ -2,6 +2,7 @@ package stats
 
 import (
 	"fmt"
+	"github.com/fatih/color"
 	"sort"
 	"time"
 
@@ -131,18 +132,19 @@ func calcOffset() int {
 // printCell given a cell value prints it with a different format
 // based on the value amount, and on the `today` flag.
 func printCell(val int) {
-	d := 1
-	b := 30
-	f := 47
+	bg := color.New(color.BgHiWhite)
 	switch {
 	case val > 0 && val < 5:
-		f = 43
+		bg.Add(color.BgHiYellow)
 	case val >= 5 && val < 10:
-		f = 42
-	case val >= 10:
-		f = 41
+		bg.Add(color.BgHiGreen)
+	case val >= 10 && val < 20:
+		bg.Add(color.BgGreen)
+	case val >= 20:
+		bg.Add(color.BgRed)
 	}
-	fmt.Printf(" %c[%d;%d;%dm%s%c[0m ", 0x1B, d, b, f, "  ", 0x1B)
+	_, _ = bg.Print("  ")
+	fmt.Print("  ")
 }
 
 // printCommitsStats prints the commits stats
@@ -261,21 +263,26 @@ func printDayCol(day int) {
 }
 
 func printLessMore() {
-	d := 1
-	b := 30
-	f := 47
 	for i := 0; i < weeksInLastSixMonths-3; i++ {
 		fmt.Printf("    ")
 	}
-	fmt.Printf("   ")
 	fmt.Printf("Less ")
-	fmt.Printf("%c[%d;%d;%dm%s%c[0m ", 0x1B, d, b, f, "  ", 0x1B)
-	f = 43
-	fmt.Printf("%c[%d;%d;%dm%s%c[0m ", 0x1B, d, b, f, "  ", 0x1B)
-	f = 42
-	fmt.Printf("%c[%d;%d;%dm%s%c[0m ", 0x1B, d, b, f, "  ", 0x1B)
-	f = 41
-	fmt.Printf("%c[%d;%d;%dm%s%c[0m ", 0x1B, d, b, f, "  ", 0x1B)
+
+	bg := color.New(color.BgHiWhite)
+	_, _ = bg.Print("  ")
+	fmt.Print(" ")
+	bg.Add(color.BgHiYellow)
+	_, _ = bg.Print("  ")
+	fmt.Print(" ")
+	bg.Add(color.BgHiGreen)
+	_, _ = bg.Print("  ")
+	fmt.Print(" ")
+	bg.Add(color.BgGreen)
+	_, _ = bg.Print("  ")
+	fmt.Print(" ")
+	bg.Add(color.BgRed)
+	_, _ = bg.Print("  ")
+	fmt.Print(" ")
 	fmt.Printf("More")
 	fmt.Printf("\n")
 }
